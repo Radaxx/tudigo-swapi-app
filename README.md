@@ -1,82 +1,225 @@
-# TudigoSwapiApp
+# Star Wars Nx Application
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+Ce projet est une application Star Wars développée avec Nx, React, TypeScript et TanStack Query.
+Il consomme l’API SWAPI pour afficher la liste des planètes, des personnages, et le détail d’un personnage.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+## Sommaire
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/react-standalone-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+- Fonctionnalités
+- Architecture Nx
+- Prérequis
+- Installation et Lancement
+- Commandes Nx Utiles
+- Structure du Projet
+- Bonnes Pratiques & Décisions Techniques
+- Next Steps
+- Crédits
 
-## Finish your remote caching setup
+## Fonctionnalités
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/uFYOCVToCY)
+- Home Page
 
+  - Deux boutons de navigation :
+    - Accès à la liste des planètes
+    - Accès à la liste des personnages
 
-## Run tasks
+- Liste des Planètes
 
-To run the dev server for your app, use:
+  - Récupère et affiche les planètes depuis SWAPI (pagination).
+  - Affichage sous forme de cartes (2 colonnes).
 
-```sh
-npx nx serve tudigo-swapi-app
+- Liste des Personnages
+
+  - Récupère et affiche les personnages depuis SWAPI (pagination).
+  - Chaque nom de personnage est cliquable pour afficher le détail.
+  - Affichage sous forme de cartes (2 colonnes).
+
+- Détail d’un Personnage
+
+  - Affiche les informations détaillées (taille, poids, couleur de cheveux, année de naissance, etc.).
+
+- Breadcrumb
+
+  - Présent sur toutes les pages, indique le chemin (ex. Home / People / Luke Skywalker).
+
+- Pagination
+
+  - Boutons Previous / Next stylisés façon Star Wars.
+  - Gérée via la logique de l’API SWAPI (next / previous).
+
+- Design Star Wars
+  - Fond noir, texte jaune, police “Star Jedi” (ou similaire).
+
+## Architecture Nx
+
+Le projet suit la logique Nx :
+
+- `apps/` : contient l’application principale React (ex. starwars).
+- `libs/` : contient les librairies partagées et les features (Planets, People, UI, etc.).
+
+Cette séparation rend le code plus modulaire et facilite l’évolutivité.
+
+## Prérequis
+
+- Node.js v14+ (ou v16+)
+- npm ou yarn
+- Nx (installé globalement) :
+
+```bash
+npm install -g nx
 ```
 
-To create a production bundle:
+(Optionnel, Nx peut s’exécuter en local via npx.)
 
-```sh
-npx nx build tudigo-swapi-app
+## Installation et Lancement
+
+1. Cloner ce dépôt :
+
+```bash
+git clone https://github.com/ton-compte/star-wars-nx.git
+cd star-wars-nx
 ```
 
-To see all available targets to run for a project, run:
+2. Installer les dépendances :
 
-```sh
-npx nx show project tudigo-swapi-app
+```bash
+npm install
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+ou
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-npx nx g @nx/react:app demo
+```bash
+yarn install
 ```
 
-To generate a new library, use:
+3. Lancer l’application :
 
-```sh
-npx nx g @nx/react:lib mylib
+```bash
+nx serve starwars
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+Par défaut, l’application sera accessible sur http://localhost:4200.
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---
 
+## Commandes Nx Utiles
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- Build de l’application :
 
-## Install Nx Console
+```bash
+nx build starwars
+```
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+- Test (unitaires) pour toutes les libs :
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+```bash
+nx test planets
+nx test people
+```
 
-## Useful links
+- Lint pour vérifier la qualité du code :
 
-Learn more:
+```bash
+nx lint starwars
+```
 
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/react-standalone-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- Format (prettier) :
 
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+```bash
+nx format
+```
+
+## Structure du Projet
+
+Exemple de structure (simplifiée) :
+
+```css
+tudigo-swapi-app/
+┣ apps/
+│ ┣ src/
+│ │ ┣ app/
+│ │ │ ┣ pages/
+│ │ │ ┗ App.tsx
+│ │ ┣ assets/
+│ │ ┗ main.tsx
+│ ┗ project.json
+┣ libs/
+│ ┣ planets/
+│ │ ┣ src/
+│ │ │ ┣ hooks/
+│ │ │ ┣ models/
+│ │ │ ┣ pages/
+│ │ │ ┗ index.ts
+│ ┣ people/
+│ │ ┣ src/
+│ │ │ ┣ hooks/
+│ │ │ ┣ models/
+│ │ │ ┣ pages/
+│ │ │ ┗ index.ts
+│ ┗ ui/
+│ ┣ src/
+│ │ ┣ components/
+│ │ │ ┣ Breadcrumb.tsx
+│ │ │ ┣ Card.tsx
+│ │ │ ┣ CardGrid.tsx
+│ │ │ ┣ Pagination.tsx
+│ │ │ ┗ ...
+│ │ ┗ index.ts
+┣ nx.json
+┣ package.json
+┗ tsconfig.base.json
+```
+
+- `apps/starwars` : application React principale, avec le routing global.
+
+- `libs/planets` : logique et pages spécifiques à l’affichage des planètes.
+- `libs/people` : logique et pages spécifiques à l’affichage des personnages.
+- `libs/ui` : composants génériques réutilisables (Breadcrumb, Card, etc.).
+
+## Bonnes Pratiques & Décisions Techniques
+
+1. TypeScript
+
+   - Utilisation d’interfaces (Planet, Person, etc.).
+   - Type Guards pour valider la structure des réponses SWAPI (ex. isPlanetsApiResponse).
+
+2. TanStack Query
+
+   - Gère les appels réseau (fetch) et le cache.
+   - usePlanets(page), usePeople(page), etc.
+
+3. Pagination
+
+   - Basée sur les champs next et previous de SWAPI.
+   - Composant réutilisable Pagination.tsx.
+
+4. UI
+
+   - Cards en 2 colonnes via un CardGrid.
+   - Composant Card<T> générique pour afficher n’importe quelle data.
+   - Design Star Wars : police “Star Jedi”, couleurs, etc.
+
+5. Tests Unitaires
+
+   - Tests sur les type guards (ex. planet.spec.ts).
+   - Tests sur les hooks (ex. usePlanets.spec.ts), avec mocking de fetch.
+
+6. Nx
+   - Séparation en librairies (planets, people, ui) pour une meilleure modularité.
+   - Facilite l’exécution de tests et de builds ciblés.
+
+## Next steps
+
+- Ajout de plus de tests unitaires
+- Fix du problème empechant de lancer les tests unitaires.
+- Fix la font qui est étrange par moment :weird:
+
+## Crédits
+
+- SWAPI (https://swapi.dev/) : pour les données Star Wars.
+- Nx (https://nx.dev/) : pour l’architecture monorepo.
+- React & TypeScript : pour la base de l’application.
+- TanStack Query : pour la gestion des appels API et du cache.
+- Police Star Jedi : pour le style emblématique Star Wars.
+
+Que la Force soit avec vous !
