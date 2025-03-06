@@ -1,7 +1,10 @@
 import { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Card, CardGrid } from '@tudigo-swapi-app/ui';
 
 import { usePeople } from '../hooks/usePeople';
+
+import { Person } from '../models/person';
 
 export const PeopleListPage = memo(() => {
   const [page, setPage] = useState(1);
@@ -12,13 +15,20 @@ export const PeopleListPage = memo(() => {
 
   return (
     <div>
-      <h2>Planets</h2>
+      <h2>Peoples</h2>
       {isFetching && <div>Fetching more people...</div>}
-      {data?.results.map((person, index) => (
-        <li key={person.name}>
-          <Link to={`/people/${index + 1}`}>{person.name}</Link>
-        </li>
-      ))}
+      <CardGrid>
+        {data?.results.map((person, index) => (
+          <Link to={`/people/${(page - 1) * 10 + (index + 1)}`}>
+            <Card<Person>
+              key={person.name}
+              data={person}
+              renderTitle={(p) => p.name}
+              renderContent={(p) => <div />}
+            />
+          </Link>
+        ))}
+      </CardGrid>
     </div>
   );
 });

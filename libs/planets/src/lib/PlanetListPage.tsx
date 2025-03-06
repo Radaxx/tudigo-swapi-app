@@ -1,6 +1,10 @@
 import { memo, useState } from 'react';
 
+import { Card, CardGrid } from '@tudigo-swapi-app/ui';
+
 import { usePlanets } from '../hooks/usePlanets';
+
+import { Planet } from '../models/planet';
 
 export const PlanetsListPage = memo(() => {
   const [page, setPage] = useState(1);
@@ -13,13 +17,22 @@ export const PlanetsListPage = memo(() => {
     <div>
       <h2>Planets</h2>
       {isFetching && <div>Fetching more planets...</div>}
-      {data?.results.map((planet) => (
-        <div key={planet.name}>
-          <p>Climate: {planet.climate}</p>
-          <p>Terrain: {planet.terrain}</p>
-          <p>Population: {planet.population}</p>
-        </div>
-      ))}
+      <CardGrid>
+        {data?.results.map((planet) => (
+          <Card<Planet>
+            key={planet.name}
+            data={planet}
+            renderTitle={(p) => p.name}
+            renderContent={(p) => (
+              <>
+                <p>Climate: {p.climate}</p>
+                <p>Terrain: {p.terrain}</p>
+                <p>Population: {p.population}</p>
+              </>
+            )}
+          />
+        ))}
+      </CardGrid>
     </div>
   );
 });
