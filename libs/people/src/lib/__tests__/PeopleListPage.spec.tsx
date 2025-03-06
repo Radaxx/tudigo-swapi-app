@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import People from './people';
+import PeopleListPage from '../PeopleListPage';
 
 describe('People', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<People />);
+    const { baseElement } = render(<PeopleListPage />);
     expect(baseElement).toBeTruthy();
   });
 });

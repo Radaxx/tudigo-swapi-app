@@ -1,1 +1,1 @@
-export * from './lib/people';
+export * from './lib/PeopleListPage';
