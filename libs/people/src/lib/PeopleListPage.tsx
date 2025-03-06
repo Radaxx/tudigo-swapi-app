@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, Card, CardGrid } from '@tudigo-swapi-app/ui';
+import { Breadcrumb, Card, CardGrid, Pagination } from '@tudigo-swapi-app/ui';
 
 import { usePeople } from '../hooks/usePeople';
 
@@ -30,6 +30,14 @@ export const PeopleListPage = memo(() => {
           </Link>
         ))}
       </CardGrid>
+
+      <Pagination
+        currentPage={page}
+        hasNext={!!data?.next}
+        hasPrevious={!!data?.previous}
+        onPrevious={() => setPage((old) => old - 1)}
+        onNext={() => setPage((old) => old + 1)}
+      />
     </div>
   );
 });

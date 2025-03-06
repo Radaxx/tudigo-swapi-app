@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 
-import { Breadcrumb, Card, CardGrid } from '@tudigo-swapi-app/ui';
+import { Breadcrumb, Card, CardGrid, Pagination } from '@tudigo-swapi-app/ui';
 
 import { usePlanets } from '../hooks/usePlanets';
 
@@ -36,6 +36,14 @@ export const PlanetsListPage = memo(() => {
           />
         ))}
       </CardGrid>
+
+      <Pagination
+        currentPage={page}
+        hasNext={!!data?.next}
+        hasPrevious={!!data?.previous}
+        onPrevious={() => setPage((old) => old - 1)}
+        onNext={() => setPage((old) => old + 1)}
+      />
     </div>
   );
 });
