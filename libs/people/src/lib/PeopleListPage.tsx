@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardGrid } from '@tudigo-swapi-app/ui';
+import { Breadcrumb, Card, CardGrid } from '@tudigo-swapi-app/ui';
 
 import { usePeople } from '../hooks/usePeople';
 
@@ -15,6 +15,7 @@ export const PeopleListPage = memo(() => {
 
   return (
     <div>
+      <Breadcrumb items={[{ label: 'Home', path: '/' }, { label: 'People' }]} />
       <h2>Peoples</h2>
       {isFetching && <div>Fetching more people...</div>}
       <CardGrid>

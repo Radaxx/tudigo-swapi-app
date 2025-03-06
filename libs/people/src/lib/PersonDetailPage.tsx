@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-import { Card } from '@tudigo-swapi-app/ui';
+import { Breadcrumb, Card } from '@tudigo-swapi-app/ui';
 
 import { usePerson } from '../hooks/usePerson';
 import { Person } from '../models/person';
@@ -16,6 +16,13 @@ export const PersonDetailPage = () => {
 
   return (
     <div>
+      <Breadcrumb
+        items={[
+          { label: 'Home', path: '/' },
+          { label: 'People', path: '/people' },
+          { label: data.name },
+        ]}
+      />
       <h2>Person Detail</h2>
       <Card<Person>
         data={data}

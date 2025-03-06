@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 
-import { Card, CardGrid } from '@tudigo-swapi-app/ui';
+import { Breadcrumb, Card, CardGrid } from '@tudigo-swapi-app/ui';
 
 import { usePlanets } from '../hooks/usePlanets';
 
@@ -15,6 +15,9 @@ export const PlanetsListPage = memo(() => {
 
   return (
     <div>
+      <Breadcrumb
+        items={[{ label: 'Home', path: '/' }, { label: 'Planets' }]}
+      />
       <h2>Planets</h2>
       {isFetching && <div>Fetching more planets...</div>}
       <CardGrid>
