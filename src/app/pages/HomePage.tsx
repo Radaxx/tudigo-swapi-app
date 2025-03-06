@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 export const HomePage = () => {
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Star Wars API</h1>
       <div style={{ marginTop: '20px' }}>
         <Link to="/planets">
-          <button>Planets</button>
+          <button className="star-wars-button" style={{ marginRight: '50px' }}>
+            Planets
+          </button>
         </Link>
         <Link to="/people">
-          <button>People</button>
+          <button className="star-wars-button">People</button>
         </Link>
       </div>
     </div>

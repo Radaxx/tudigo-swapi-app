@@ -1,0 +1,21 @@
+.star-wars-button {
+    font-family: 'StarJedi', sans-serif;
+    background-color: #000;
+    color: #FFE81F;
+    border: 1px solid #FFE81F;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.star-wars-button:hover {
+    background-color: #FFE81F;
+    color: #000;
+}
+
+.star-wars-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed
+}

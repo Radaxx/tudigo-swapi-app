@@ -1,1 +1,1 @@
-export * from './lib/PlanetListPage';
+export * from './pages/PlanetListPage';

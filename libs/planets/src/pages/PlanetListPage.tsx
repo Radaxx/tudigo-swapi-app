@@ -20,6 +20,13 @@ export const PlanetsListPage = memo(() => {
       />
       <h2>Planets</h2>
       {isFetching && <div>Fetching more planets...</div>}
+      <Pagination
+        currentPage={page}
+        hasNext={!!data?.next}
+        hasPrevious={!!data?.previous}
+        onPrevious={() => setPage((old) => old - 1)}
+        onNext={() => setPage((old) => old + 1)}
+      />
       <CardGrid>
         {data?.results.map((planet) => (
           <Card<Planet>
@@ -36,14 +43,6 @@ export const PlanetsListPage = memo(() => {
           />
         ))}
       </CardGrid>
-
-      <Pagination
-        currentPage={page}
-        hasNext={!!data?.next}
-        hasPrevious={!!data?.previous}
-        onPrevious={() => setPage((old) => old - 1)}
-        onNext={() => setPage((old) => old + 1)}
-      />
     </div>
   );
 });

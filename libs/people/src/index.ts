@@ -1,2 +1,2 @@
-export * from './lib/PeopleListPage';
-export * from './lib/PersonDetailPage';
+export * from './pages/PeopleListPage';
+export * from './pages/PersonDetailPage';

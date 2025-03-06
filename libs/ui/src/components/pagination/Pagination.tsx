@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './pagination.css';
+
 export interface PaginationProps {
   currentPage: number;
   hasPrevious: boolean;
@@ -16,20 +18,16 @@ export const Pagination = ({
   onNext,
 }: PaginationProps) => {
   return (
-    <div style={{ marginTop: '20px' }}>
+    <div style={{ margin: '20px 0px 20px 0' }}>
       <button
         disabled={!hasPrevious}
         onClick={onPrevious}
-        style={{ marginRight: '10px' }}
+        className="star-wars-button"
       >
         Previous
       </button>
-      <span>{currentPage}</span>
-      <button
-        disabled={!hasNext}
-        onClick={onNext}
-        style={{ marginLeft: '10px' }}
-      >
+      <span style={{ margin: '0 10px 0 10px' }}>{currentPage}</span>
+      <button disabled={!hasNext} onClick={onNext} className="star-wars-button">
         Next
       </button>
     </div>

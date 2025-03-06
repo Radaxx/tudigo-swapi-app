@@ -1,6 +1,8 @@
-export * from './lib/cards/Card';
-export * from './lib/cards/CardGrid';
+export * from './components/cards/Card';
+export * from './components/cards/CardGrid';
 
-export * from './lib/breadcrumb/Breadcrumb';
+export * from './components/breadcrumb/Breadcrumb';
 
-export * from './lib/pagination/Pagination';
+export * from './components/pagination/Pagination';
+
+export * from './components/header/Header';

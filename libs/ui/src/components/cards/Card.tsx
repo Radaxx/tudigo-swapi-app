@@ -17,7 +17,7 @@ export const Card = <T,>({
         border: '2px dotted #FFE81F',
         padding: '1rem',
         borderRadius: '2px',
-        color: '#333',
+        color: '#fff',
       }}
     >
       <div style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>

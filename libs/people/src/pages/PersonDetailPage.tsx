@@ -29,8 +29,8 @@ export const PersonDetailPage = () => {
         renderTitle={(p) => p.name}
         renderContent={(p) => (
           <>
-            <p>Height: {p.height}</p>
-            <p>Mass: {p.mass}</p>
+            <p>Height: {p.height}cm</p>
+            <p>Mass: {p.mass}kg</p>
             <p>Hair Color: {p.hair_color}</p>
             <p>Birth Year: {p.birth_year}</p>
             <p>Gender: {p.gender}</p>

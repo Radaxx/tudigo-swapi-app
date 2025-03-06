@@ -18,6 +18,13 @@ export const PeopleListPage = memo(() => {
       <Breadcrumb items={[{ label: 'Home', path: '/' }, { label: 'People' }]} />
       <h2>Peoples</h2>
       {isFetching && <div>Fetching more people...</div>}
+      <Pagination
+        currentPage={page}
+        hasNext={!!data?.next}
+        hasPrevious={!!data?.previous}
+        onPrevious={() => setPage((old) => old - 1)}
+        onNext={() => setPage((old) => old + 1)}
+      />
       <CardGrid>
         {data?.results.map((person, index) => (
           <Link to={`/people/${(page - 1) * 10 + (index + 1)}`}>
@@ -30,14 +37,6 @@ export const PeopleListPage = memo(() => {
           </Link>
         ))}
       </CardGrid>
-
-      <Pagination
-        currentPage={page}
-        hasNext={!!data?.next}
-        hasPrevious={!!data?.previous}
-        onPrevious={() => setPage((old) => old - 1)}
-        onNext={() => setPage((old) => old + 1)}
-      />
     </div>
   );
 });
