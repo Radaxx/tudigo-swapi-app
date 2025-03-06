@@ -1,1 +1,11 @@
 /* Your styles goes here. */
+body {
+    background-color: black;
+    color: #FFE81F;
+}
+
+h1,
+h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}

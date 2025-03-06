@@ -1,13 +1,15 @@
-// Uncomment this line to use CSS modules
-// import styles from './app.module.css';
-import NxWelcome from './nx-welcome';
+import { Routes, Route } from 'react-router-dom';
 
-export function App() {
+import { HomePage } from './pages/HomePage';
+
+const App = () => {
   return (
     <div>
-      <NxWelcome title="tudigo-swapi-app" />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
