@@ -120,7 +120,7 @@ nx test people
 - Lint pour vérifier la qualité du code :
 
 ```bash
-nx lint starwars
+nx lint
 ```
 
 - Format (prettier) :
@@ -213,6 +213,10 @@ tudigo-swapi-app/
 - Ajout de plus de tests unitaires
 - Fix du problème empechant de lancer les tests unitaires.
 - Fix la font qui est étrange par moment :weird:
+- Etoffer la nombre de données (movies, planets, etc...)
+- Gerer les erreurs
+- Ajout de la page 404
+- Check de l'accessibilité
 
 ## Crédits
 
