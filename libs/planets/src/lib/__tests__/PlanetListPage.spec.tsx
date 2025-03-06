@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import Planets from './planets';
+import PlanetListPage from '../PlanetListPage';
 
 describe('Planets', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Planets />);
+    const { baseElement } = render(<PlanetListPage />);
     expect(baseElement).toBeTruthy();
   });
 });
